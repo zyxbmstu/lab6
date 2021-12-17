@@ -4,7 +4,10 @@ import akka.actor.ActorRef;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.http.javadsl.model.Query;
+import akka.http.javadsl.model.Uri;
 import akka.http.javadsl.server.Route;
+import akka.japi.Pair;
 import akka.pattern.Patterns;
 import bmstu.iu9.lab6.messages.RandomServer;
 import org.apache.zookeeper.KeeperException;
@@ -47,6 +50,14 @@ public class Server {
                         })
                 )
         );
+    }
+
+    private String createRedirectLink(String url, String anonymazerUrl, int count) {
+        return Uri.create(url)
+                .query(Query.create(
+                        Pair.create(URL_PARAM, anonymazerUrl),
+                        Pair.create(COUNT_PARAM, Integer.toString(count - 1));
+                ))
     }
 
     private CompletionStage<HttpResponse> fetch(String url) {
