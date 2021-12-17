@@ -35,6 +35,8 @@ public class ZookeeperServices {
                     watchServerList();
                 }
             });
+
+            for ()
         }
     }
 
