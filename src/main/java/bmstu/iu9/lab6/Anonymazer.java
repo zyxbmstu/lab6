@@ -20,7 +20,7 @@ public class Anonymazer {
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
-
+        Server server = new Server(http, port, storageActor);
     }
 
 }

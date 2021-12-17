@@ -1,8 +1,8 @@
 package bmstu.iu9.lab6;
 
 import akka.actor.ActorRef;
-import akka.http.scaladsl.Http;
-import org.apache.zookeeper.server.ZooKeeperServer;
+import akka.http.javadsl.Http;
+import org.apache.zookeeper.KeeperException;
 
 import java.io.IOException;
 
@@ -22,9 +22,9 @@ public class Server {
         return LOCAL_URL + port;
     }
 
-    private void initZookeeper(int port) throws IOException {
+    private void initZookeeper(int port) throws IOException, InterruptedException, KeeperException {
         ZookeeperServices zookeeperServices = new ZookeeperServices(storageActor);
-        zookeeperServices.initServer();
+        zookeeperServices.initServer(getUrl(port));
     }
 
 }
