@@ -14,13 +14,14 @@ import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import org.apache.zookeeper.KeeperException;
 
 public class Anonymazer {
 
     private static final String ACTOR_SYSTEM_NAME = "anonymizer";
     private static final String HOST = "localhost";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
         int port = Integer.parseInt(args[0]);
         ActorSystem system = ActorSystem.create(ACTOR_SYSTEM_NAME);
         ActorRef storageActor = system.actorOf(Props.create(StorageActor.class));

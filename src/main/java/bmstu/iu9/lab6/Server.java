@@ -14,6 +14,7 @@ import org.apache.zookeeper.KeeperException;
 import akka.http.javadsl.server.AllDirectives;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
 public class Server extends AllDirectives{
@@ -24,12 +25,13 @@ public class Server extends AllDirectives{
     private static final String LOCAL_URL = "http://localhost";
     private static final String URL_PARAM = "url";
     private static final String COUNT_PARAM = "count";
-    private static final int TIMEOUT = 5000;
+    private static final Duration TIMEOUT = Duration.ofMillis(5000);
 
 
-    public Server(Http http, int port, ActorRef storageActor) throws IOException {
+    public Server(Http http, int port, ActorRef storageActor) throws IOException, InterruptedException, KeeperException {
         this.http = http;
         this.storageActor = storageActor;
+        initZookeeper(port);
     }
 
     private String getUrl(int port) {
