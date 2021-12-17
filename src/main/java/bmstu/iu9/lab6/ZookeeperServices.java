@@ -27,6 +27,12 @@ public class ZookeeperServices {
         this.storageActor = storageActor;
     }
 
+    public void initServer(String url) throws KeeperException, InterruptedException {
+        zookeeper.create(
+                
+        )
+    }
+
     private void watchServerList() {
         try {
             final List<String> servers = new ArrayList<>();

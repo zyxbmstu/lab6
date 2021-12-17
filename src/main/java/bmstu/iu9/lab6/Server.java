@@ -17,7 +17,8 @@ public class Server {
     }
 
     private void initZookeeper(int port) throws IOException {
-        ZookeeperServices
+        ZookeeperServices zookeeperServices = new ZookeeperServices(storageActor);
+        zookeeperServices.
     }
 
 }
