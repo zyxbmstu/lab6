@@ -56,8 +56,9 @@ public class Server {
         return Uri.create(url)
                 .query(Query.create(
                         Pair.create(URL_PARAM, anonymazerUrl),
-                        Pair.create(COUNT_PARAM, Integer.toString(count - 1));
+                        Pair.create(COUNT_PARAM, Integer.toString(count - 1))
                 ))
+                .toString();
     }
 
     private CompletionStage<HttpResponse> fetch(String url) {
