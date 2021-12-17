@@ -2,10 +2,15 @@ package bmstu.iu9.lab6;
 
 import akka.actor.ActorRef;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.model.HttpRequest;
+import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
+import bmstu.iu9.lab6.messages.RandomServer;
 import org.apache.zookeeper.KeeperException;
 
 import java.io.IOException;
+import java.util.concurrent.CompletionStage;
 
 public class Server {
 
@@ -35,8 +40,19 @@ public class Server {
         return get(() ->
                 parameter(URL_PARAM, url ->
                         parameter(COUNT_PARAM, countParam -> {
-                            int count = Integer.parseInt(countParam)
+                            int count = Integer.parseInt(countParam);
+                            return count == 0
+                                    ? completeWithFuture(fetch)
                         })))
+    }
+
+    private CompletionStage<HttpResponse> fetch(String url) {
+        return http.singleRequest(HttpRequest.create(url));
+    }
+
+    private CompletionStage<HttpResponse> redirect(String url, int count) {
+        return Patterns.ask(storageActor, new RandomServer(), 70)
+                .thenCompose(url -> fetch())
     }
 
 }
