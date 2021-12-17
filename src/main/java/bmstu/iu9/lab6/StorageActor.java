@@ -9,6 +9,10 @@ public class StorageActor extends AbstractActor {
 
     private String[] servers;
 
+    private String getRandomServer() {
+        String url = servers[new Random().nextInt(servers.length)];
+    }
+
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create().match(ServerMessage.class, message -> {
