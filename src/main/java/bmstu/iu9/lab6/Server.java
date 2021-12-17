@@ -11,6 +11,7 @@ import akka.japi.Pair;
 import akka.pattern.Patterns;
 import bmstu.iu9.lab6.messages.RandomServer;
 import org.apache.zookeeper.KeeperException;
+import akka.http.javadsl.server.AllDirectives;
 
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
