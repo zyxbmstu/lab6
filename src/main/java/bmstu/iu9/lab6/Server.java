@@ -18,7 +18,7 @@ public class Server {
         this.storageActor = storageActor;
     }
 
-    private getUrl(int port) {
+    private String getUrl(int port) {
         return LOCAL_URL + port;
     }
 
