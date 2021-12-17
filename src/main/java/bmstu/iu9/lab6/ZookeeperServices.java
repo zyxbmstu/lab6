@@ -3,6 +3,8 @@ package bmstu.iu9.lab6;
 import akka.actor.ActorRef;
 
 import java.io.IOException;
+import java.util.List;
+
 import org.apache.zookeeper.*;
 
 public class ZookeeperServices {
@@ -24,6 +26,10 @@ public class ZookeeperServices {
         this.storageActor = storageActor;
     }
 
-    private void 
+    private void watchServerList() {
+        try {
+            final List<String> serverNames = zookeeper.getChildren(SERVERS_PATH, )
+        }
+    }
 
 }
