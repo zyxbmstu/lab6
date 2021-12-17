@@ -30,8 +30,8 @@ public class ZookeeperServices {
     private void watchServerList() {
         try {
             final List<String> servers = new ArrayList<>();
-            final List<String> serverNames = zookeeper.getChildren(SERVERS_PATH, watchedEvent -> {
-                if (watchedEvent.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
+            final List<String> serverNames = zookeeper.getChildren(SERVERS_PATH, event -> {
+                if (event.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
                     watchServerList();
                 }
             });
