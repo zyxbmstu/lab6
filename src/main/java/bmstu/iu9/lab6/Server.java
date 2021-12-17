@@ -19,7 +19,7 @@ public class Server {
     }
 
     private getUrl(int port) {
-        return;
+        return LOCAL_URL + port;
     }
 
     private void initZookeeper(int port) throws IOException {
