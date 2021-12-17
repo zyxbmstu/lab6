@@ -11,14 +11,20 @@ public class Server {
     private Http http;
     private ActorRef storageActor;
 
+    private static final String LOCAL_URL = "http://localhost";
+
     public Server(Http http, int port, ActorRef storageActor) throws IOException {
         this.http = http;
         this.storageActor = storageActor;
     }
 
+    private getUrl(int port) {
+        return;
+    }
+
     private void initZookeeper(int port) throws IOException {
         ZookeeperServices zookeeperServices = new ZookeeperServices(storageActor);
-        zookeeperServices.
+        zookeeperServices.initServer();
     }
 
 }
