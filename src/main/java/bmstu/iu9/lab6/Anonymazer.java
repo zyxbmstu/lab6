@@ -13,7 +13,7 @@ public class Anonymazer {
     public static void main(String[] args) throws IOException {
         int port = Integer.parseInt(args[0]);
         ActorSystem system = ActorSystem.create(ACTOR_SYSTEM_NAME);
-        ActorRef storageActor = system.actorOf(Props.create());
+        ActorRef storageActor = system.actorOf(Props.create(StorageActor.class));
     }
 
 }
