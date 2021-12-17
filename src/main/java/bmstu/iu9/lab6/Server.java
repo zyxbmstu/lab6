@@ -6,6 +6,7 @@ import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
+import bmstu.iu9.lab6.messages.RandomServer;
 import org.apache.zookeeper.KeeperException;
 
 import java.io.IOException;
@@ -50,7 +51,8 @@ public class Server {
     }
 
     private CompletionStage<HttpResponse> redirect(String url, int count) {
-        return Patterns.ask(storageActor)
+        return Patterns.ask(storageActor, new RandomServer(), 70)
+                .thenCompose(url -> fetch())
     }
 
 }
