@@ -5,6 +5,7 @@ import java.io.IOException;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.stream.ActorMaterializer;
 
 public class Anonymazer {
 
@@ -14,6 +15,10 @@ public class Anonymazer {
         int port = Integer.parseInt(args[0]);
         ActorSystem system = ActorSystem.create(ACTOR_SYSTEM_NAME);
         ActorRef storageActor = system.actorOf(Props.create(StorageActor.class));
+
+        final Http http = Http.get(system);
+        final ActorMaterializer materializer = ActorMaterializer.create(system);
+
     }
 
 }
