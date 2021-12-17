@@ -23,6 +23,7 @@ public class Server {
     private static final String LOCAL_URL = "http://localhost";
     private static final String URL_PARAM = "url";
     private static final String COUNT_PARAM = "count";
+    private static final int TIMEOUT = 5000;
 
 
     public Server(Http http, int port, ActorRef storageActor) throws IOException {
@@ -66,8 +67,8 @@ public class Server {
     }
 
     private CompletionStage<HttpResponse> redirect(String url, int count) {
-        return Patterns.ask(storageActor, new RandomServer(), 70)
-                .thenCompose(url -> fetch())
+        return Patterns.ask(storageActor, new RandomServer(), TIMEOUT)
+                .thenCompose(serverUrl -> fetch(createRedirectLink((String) serverUrl, url, count)));
     }
 
 }
