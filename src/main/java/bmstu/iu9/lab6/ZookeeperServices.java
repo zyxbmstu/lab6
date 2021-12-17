@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bmstu.iu9.lab6.messages.ServerMessage;
 import org.apache.zookeeper.*;
 
 public class ZookeeperServices {
@@ -52,7 +53,7 @@ public class ZookeeperServices {
                 servers.add(new String(url));
             }
 
-            storageActor
+            storageActor.tell(new ServerMessage(servers.toArray(new String[0])), ActorRef.noSender());
         } catch (KeeperException | InterruptedException e) {
             e.printStackTrace();
         }
