@@ -17,7 +17,7 @@ public class Server {
     }
 
     private void initZookeeper(int port) throws IOException {
-        ZooKeeperS
+        ZookeeperServices
     }
 
 }
