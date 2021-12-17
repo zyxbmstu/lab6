@@ -2,6 +2,7 @@ package bmstu.iu9.lab6;
 
 import akka.actor.ActorRef;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.KeeperException;
 
 import java.io.IOException;
@@ -25,6 +26,11 @@ public class Server {
     private void initZookeeper(int port) throws IOException, InterruptedException, KeeperException {
         ZookeeperServices zookeeperServices = new ZookeeperServices(storageActor);
         zookeeperServices.initServer(getUrl(port));
+    }
+
+    public Route createRoute() {
+        return get(() ->
+                parameter)
     }
 
 }

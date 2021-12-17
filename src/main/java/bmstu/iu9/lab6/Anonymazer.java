@@ -2,11 +2,15 @@ package bmstu.iu9.lab6;
 
 import java.io.IOException;
 
+import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.model.HttpRequest;
+import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
+import akka.stream.javadsl.Flow;
 
 public class Anonymazer {
 
@@ -21,6 +25,8 @@ public class Anonymazer {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
         Server server = new Server(http, port, storageActor);
+
+        final Flow<HttpRequest, HttpResponse, NotUsed> flow = server.
     }
 
 }
