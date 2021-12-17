@@ -15,6 +15,7 @@ public class ZookeeperServices {
 
     private static final String ZOOKEEPER_SERVER = "127.0.0.1:2181";
     private static final String SERVERS_PATH = "/servers";
+    private static final String NODE_PATH = "/servers/node";
     private static final int TIMEOUT = 5000;
     private static final Watcher DEFAULT_WATCHER = null;
 
@@ -29,8 +30,11 @@ public class ZookeeperServices {
 
     public void initServer(String url) throws KeeperException, InterruptedException {
         zookeeper.create(
-
-        )
+            NODE_PATH,
+                url.getBytes(),
+                ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                CreateMode.EPHEMERAL_SEQUENTIAL
+        );
     }
 
     private void watchServerList() {
