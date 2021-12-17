@@ -13,6 +13,9 @@ public class Server {
     private ActorRef storageActor;
 
     private static final String LOCAL_URL = "http://localhost";
+    private static final String URL_PARAM = "url";
+    private static final String COUNT_PARAM = "count";
+
 
     public Server(Http http, int port, ActorRef storageActor) throws IOException {
         this.http = http;
@@ -30,7 +33,10 @@ public class Server {
 
     public Route createRoute() {
         return get(() ->
-                parameter)
+                parameter(URL_PARAM, url ->
+                        parameter(COUNT_PARAM, countParam -> {
+                            int count = Integer.parseInt(countParam)
+                        })))
     }
 
 }
