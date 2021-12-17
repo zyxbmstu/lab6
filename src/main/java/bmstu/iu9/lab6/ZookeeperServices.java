@@ -28,7 +28,9 @@ public class ZookeeperServices {
 
     private void watchServerList() {
         try {
-            final List<String> serverNames = zookeeper.getChildren(SERVERS_PATH, )
+            final List<String> serverNames = zookeeper.getChildren(SERVERS_PATH, event -> {
+                
+            })
         }
     }
 
