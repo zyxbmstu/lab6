@@ -3,6 +3,7 @@ package bmstu.iu9.lab6;
 import akka.actor.ActorRef;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.zookeeper.*;
@@ -28,8 +29,9 @@ public class ZookeeperServices {
 
     private void watchServerList() {
         try {
-            final List<String> serverNames = zookeeper.getChildren(SERVERS_PATH, event -> {
-                if (event.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
+            final List<String> servers = new ArrayList<>();
+            final List<String> serverNames = zookeeper.getChildren(SERVERS_PATH, watchedEvent -> {
+                if (watchedEvent.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
                     watchServerList();
                 }
             });
