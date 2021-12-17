@@ -22,7 +22,7 @@ public class StorageActor extends AbstractActor {
         return ReceiveBuilder.create().match(ServerMessage.class, message -> {
             this.servers = message.getServers();
         }).match(RandomServer.class, message ->
-                sender().tell()
+                sender().tell(getRandomServer(), self())
         ).build();
     }
 
