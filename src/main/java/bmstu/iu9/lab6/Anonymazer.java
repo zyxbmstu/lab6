@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.actor.Props;
 
 public class Anonymazer {
 
@@ -12,7 +13,7 @@ public class Anonymazer {
     public static void main(String[] args) throws IOException {
         int port = Integer.parseInt(args[0]);
         ActorSystem system = ActorSystem.create(ACTOR_SYSTEM_NAME);
-        ActorRef
+        ActorRef storageActor = system.actorOf(Props.create());
     }
 
 }

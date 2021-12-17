@@ -1,2 +1,4 @@
-package bmstu.iu9.lab6;public class StorageActor {
+package bmstu.iu9.lab6;
+
+public class StorageActor {
 }
