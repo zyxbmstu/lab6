@@ -14,6 +14,7 @@ public class StorageActor extends AbstractActor {
     private String getRandomServer() {
         String url = servers[new Random().nextInt(servers.length)];
         System.out.println("REQUEST REDIRECTED: " + url);
+        return url;
     }
 
     @Override
