@@ -42,8 +42,11 @@ public class Server {
                         parameter(COUNT_PARAM, countParam -> {
                             int count = Integer.parseInt(countParam);
                             return count == 0
-                                    ? completeWithFuture(fetch)
-                        })))
+                                    ? completeWithFuture(fetch(url))
+                                    : completeWithFuture(redirect(url, count));
+                        })
+                )
+        );
     }
 
     private CompletionStage<HttpResponse> fetch(String url) {
