@@ -7,7 +7,6 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.Http;
 import akka.stream.ActorMaterializer;
-import akka.stream.Server;
 
 public class Anonymazer {
 
@@ -21,8 +20,7 @@ public class Anonymazer {
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
-        Server server = new Server() {
-        }
+        Anonymazer server = new Anonymazer(http, port, storageActor);
     }
 
 }
