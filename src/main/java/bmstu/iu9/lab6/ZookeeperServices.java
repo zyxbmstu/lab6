@@ -20,7 +20,7 @@ public class ZookeeperServices {
     }
 
     public ZookeeperServices(ActorRef storageActor) throws IOException {
-        this.zookeeper = ;
+        this.zookeeper = create();
         this.storageActor = storageActor;
     }
 
