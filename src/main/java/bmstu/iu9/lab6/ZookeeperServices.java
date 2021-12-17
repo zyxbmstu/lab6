@@ -36,7 +36,12 @@ public class ZookeeperServices {
                 }
             });
 
-            for ()
+            for (String serverName : serverNames) {
+                byte[] url = zookeeper.getData(SERVERS_PATH + "/" + serverName, DEFAULT_WATCHER, null);
+                servers.add(new String(url));
+            }
+        } catch (KeeperException | InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
