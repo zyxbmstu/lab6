@@ -2,6 +2,7 @@ package bmstu.iu9.lab6;
 
 import akka.actor.ActorRef;
 import akka.http.scaladsl.Http;
+import org.apache.zookeeper.server.ZooKeeperServer;
 
 import java.io.IOException;
 
@@ -15,6 +16,8 @@ public class Server {
         this.storageActor = storageActor;
     }
 
-    private void initZookeeper(int port) throws IOException
+    private void initZookeeper(int port) throws IOException {
+        ZooKeeperS
+    }
 
 }
