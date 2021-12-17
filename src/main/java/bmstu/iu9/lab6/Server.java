@@ -16,7 +16,7 @@ import akka.http.javadsl.server.AllDirectives;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
-public class Server {
+public class Server extends AllDirectives{
 
     private Http http;
     private ActorRef storageActor;
