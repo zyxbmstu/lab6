@@ -1,4 +1,13 @@
 package bmstu.iu9.lab6;
 
-public class StorageActor {
+import akka.actor.AbstractActor;
+import akka.japi.pf.ReceiveBuilder;
+
+public class StorageActor extends AbstractActor {
+
+    @Override
+    public Receive createReceive() {
+        return ReceiveBuilder.create().match()
+    }
+
 }
